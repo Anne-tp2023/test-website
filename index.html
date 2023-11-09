@@ -2,9 +2,20 @@
 <html>
 <head>
     <title>Test Page</title>
+    <script>
+        function updateSiteStatus() {
+            var status = document.getElementById("status");
+            if (status.textContent === "Up") {
+                status.textContent = "Down";
+            } else {
+                status.textContent = "Up";
+            }
+        }
+    </script>
 </head>
 <body>
     <h1>This is a test page.</h1>
     <p>Website Status: <span id="status">Up</span></p>
+    <button onclick="updateSiteStatus()">Toggle Site Status</button>
 </body>
 </html>

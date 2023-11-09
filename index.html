@@ -1,1 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Test Page</title>
+  <script>
+    // Function to check the website status
+    function checkStatus() {
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', '/check-status', true);
+      xhr.onload = function() {
+        if (xhr.status === 200) {
+          var statusElement = document.getElementById('status');
+          statusElement.textContent = xhr.responseText;
+        }
+      };
+      xhr.send();
+    }
+
+    // Function to toggle the website status
+    function toggleStatus() {
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', '/toggle-status', true);
+      xhr.onload = function() {
+        if (xhr.status === 200) {
+          checkStatus(); // Update the displayed status
+        }
+      };
+      xhr.send();
+    }
+
+    // Periodically check the website status
+    setInterval(checkStatus, 5000); // Check every 5 seconds
+  </script>
+</head>
+<body>
+  <h1>This is a test page.</h1>
+  <p>Website Status: <span id="status">Up</span></p>
+  <button onclick="toggleStatus()">Toggle Site Status</button>
+</body>
+</html>
 
